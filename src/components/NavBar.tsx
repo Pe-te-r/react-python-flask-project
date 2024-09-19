@@ -1,4 +1,5 @@
 import { RiAccountPinCircleLine } from "react-icons/ri"
+import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return (
@@ -15,8 +16,8 @@ const NavBar = () => {
         <details>
           <summary className="flex items-center">Account <RiAccountPinCircleLine size={21}/> </summary>
           <ul className="bg-base-100 rounded-t-none p-2">
-            <li><a>Login</a></li>
-            <li><a>Register</a></li>
+            <li><Link to='/login'>Login</Link></li>
+            <li><Link to='/register'>Register</Link></li>
           </ul>
         </details>
       </li>
