@@ -5,5 +5,5 @@ export interface LoginRequest {
 
 export interface LoginResponse {
     error?: any
-    token: string;
+    access_token: string;
   }
