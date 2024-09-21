@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { LoginRequest, LoginResponse } from "../types/types";
+import { LoginRequest, LoginResponse,RegisterResponse,RegisterRequest } from "../types/types";
 import { url } from "../url";
 
 
 
-export const api = createApi({
-  reducerPath: "api",
+export const users = createApi({
+  reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: url }),
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginRequest>({
@@ -15,7 +15,15 @@ export const api = createApi({
         body: credentials,
       }),
     }),
+    register: builder.mutation<RegisterResponse, RegisterRequest>({
+      query: (credentials) => ({
+        url: "users/register",
+        method: "POST",
+        body: credentials,
+      }),
+    })
   }),
 });
 
-export const { useLoginMutation } = api;
+export const { useLoginMutation } = users;
+export const { useRegisterMutation } = users;

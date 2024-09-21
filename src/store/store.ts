@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { api }  from "../api/auth"
+import { users }  from "../api/auth"
 
 export const store = configureStore({
   reducer: {
     // Add the api reducer
-    [api.reducerPath]: api.reducer,
+    [users.reducerPath]: users.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling, and other features of RTK Query
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat(users.middleware),
 });
 
 setupListeners(store.dispatch);

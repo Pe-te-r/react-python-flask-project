@@ -1,17 +1,19 @@
-import {  useState } from 'react';
+import React,{  useState } from 'react';
 import { FaEnvelope, FaUser, FaLock } from 'react-icons/fa';
-import { useLoginMutation } from '../api/auth';
-import { useToast } from '../Toast/Toast';
+import { useLoginMutation } from '../../api/auth';
+import { useToast } from '../../Toast/Toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const {showToast} = useToast()
   const navigate = useNavigate()
 
+  const [code, setCode] = useState<Boolean>(false);
+
   const [login, { isLoading}] = useLoginMutation();
   const [formData, setFormData] = useState({
     email: '',
-    username: '',
+    code: '',
     password: ''
   });
 
@@ -26,7 +28,7 @@ const Login = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (formData.email === '' || formData.password === '' || formData.username === '') {
+    if (formData.email === '' || formData.password === '' ) {
       showToast('All fields are required.','warning');
       return;
     }
@@ -71,18 +73,6 @@ const Login = () => {
             />
           </div>
           <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-blue-500">
-            <FaUser className="text-gray-400 mr-2" />
-            <input
-              type="text"
-              name='username'
-              placeholder="Username"
-              className="w-full border-none outline-none"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-blue-500">
             <FaLock className="text-gray-400 mr-2" />
             <input
               type="password"
@@ -94,6 +84,20 @@ const Login = () => {
               required
             />
           </div>
+          {code &&
+          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-blue-500">
+            <FaUser className="text-gray-400 mr-2" />
+            <input
+              type="text"
+              name='code'
+              placeholder="code"
+              className="w-full border-none outline-none"
+              value={formData.code}
+              onChange={handleChange}
+              required
+              />
+          </div>
+            }
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
