@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar"
 import Login from './pages/auth/Login';
 import Home from './pages/Home';
 import Register from './pages/auth/Register';
+import ProtectedRoute from './components/Protect';
 
 function App() {
   
@@ -10,7 +11,8 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<ProtectedRoute roleRequired="admin"><Home /> </ProtectedRoute>}/>
+        {/* <Route path='/' element={<Home />}/> */}
         <Route path='/login' element={<Login  />} />
         <Route path='/register' element={<Register />} />
       </Routes>

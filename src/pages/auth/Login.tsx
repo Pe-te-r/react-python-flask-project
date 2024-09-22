@@ -3,11 +3,14 @@ import { FaEnvelope, FaUser, FaLock } from 'react-icons/fa';
 import { useLoginMutation } from '../../api/auth';
 import { useToast } from '../../Toast/Toast';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from '../../context_comp/Storage';
+import { useAuth } from '../../context_comp/Auth';
 
 const Login = () => {
   const {showToast} = useToast()
   const navigate = useNavigate()
-
+  const {setData}= useLocalStorage()
+  const {loginAsAdmin}=useAuth()
   const [code, setCode] = useState<Boolean>(false);
 
   const [login, { isLoading}] = useLoginMutation();
@@ -51,6 +54,8 @@ const Login = () => {
       console.log('Login Successful:', response?.access_token); 
       showToast('Login successful!','success');
       navigate('/')
+      loginAsAdmin()
+
     } catch (error: any) {
       // Error handling based on status code
       if (error?.status === 401) {
