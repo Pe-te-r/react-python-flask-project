@@ -34,10 +34,19 @@ const Login = () => {
     }
 
     try {
-      const response =await login({
-        email: formData.email,
-        password: formData.password
-      }).unwrap();
+      let response: any;
+      if(code){
+        response =await login({
+          email: formData.email,
+          password: formData.password,
+          code: formData.code 
+        }).unwrap();
+      }else{
+        response =await login({
+          email: formData.email,
+          password: formData.password
+        }).unwrap();
+      }
 
       console.log('Login Successful:', response?.access_token); 
       showToast('Login successful!','success');
@@ -45,11 +54,15 @@ const Login = () => {
     } catch (error: any) {
       // Error handling based on status code
       if (error?.status === 401) {
-        showToast('Incorrect password.','error');
+        showToast(error['data'].error,'error');
+        if (error['data'].error.startsWith('Email')){
+          setCode(true);
+          showToast('Enter the verification code sent to your email.','info');
+        }
       } else if (error?.status === 404) {
-        showToast('Incorrect email address.','error');
+        showToast(error['data'].error,'error');
       } else {
-        showToast('An unexpected error occurred.','info');
+        showToast(error['data'].error,'info');
       }
     }
   };
