@@ -51,8 +51,12 @@ const Login = () => {
         }).unwrap();
       }
 
-      console.log('Login Successful:', response?.access_token); 
+      const user_details=response.user;
+      for (let detail in user_details){
+        setData(detail,user_details[detail]);
+      }
       showToast('Login successful!','success');
+      setData('token',response?.token)
       navigate('/')
       loginAsAdmin()
 
