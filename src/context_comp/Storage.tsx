@@ -37,7 +37,7 @@ export const LocalStorageProvider: React.FC<{ children: React.ReactNode }> = ({ 
 };
 
 // Custom hook to use the localStorage context
-export const useLocalStorage = (): LocalStorageContextProps => {
+export const  useLocalStorage = (): LocalStorageContextProps => {
   const context = useContext(LocalStorageContext);
   if (!context) {
     throw new Error('useLocalStorage must be used within a LocalStorageProvider');
