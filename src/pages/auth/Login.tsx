@@ -4,13 +4,11 @@ import { useLoginMutation } from '../../api/auth';
 import { useToast } from '../../Toast/Toast';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../../context_comp/Storage';
-import { useAuth } from '../../context_comp/Auth';
 
 const Login = () => {
   const {showToast} = useToast()
   const navigate = useNavigate()
   const {setData}= useLocalStorage()
-  const {loginAsAdmin}=useAuth()
   const [code, setCode] = useState<Boolean>(false);
 
   const [login, { isLoading}] = useLoginMutation();
