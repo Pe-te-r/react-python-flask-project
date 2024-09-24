@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-md">
+    <div className="navbar bg-base-100 shadow-md sticky">
   <div className="flex-1">
     <a className="btn btn-ghost text-xl">Phantom Rentals</a>
   </div>
@@ -15,7 +15,7 @@ const NavBar = () => {
       <li>
         <details>
           <summary className="flex items-center">Account <RiAccountPinCircleLine size={21}/> </summary>
-          <ul className="bg-base-100 rounded-t-none p-2">
+          <ul className="bg-base-100 rounded-t-none p-2 z-50">
             <li><Link to='/login'>Login</Link></li>
             <li><Link to='/register'>Register</Link></li>
           </ul>

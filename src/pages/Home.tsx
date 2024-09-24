@@ -59,7 +59,10 @@ const Home = () => {
       transmission: 'Automatic',
       passengers: 5,
       pricePerDay: 65.00,
-    },
+    }
+  ];
+
+  const fav_cars=[
     {
       name: 'Mercedes-Benz G-Class',
       type: 'SUV',
@@ -96,7 +99,7 @@ const Home = () => {
       passengers: 2,
       pricePerDay: 250.00,
     }
-  ];
+  ]
   
 
   const [activeIndex, setActiveIndex] = useState(0); // Track the current hero (0 or 1)
@@ -109,7 +112,7 @@ const Home = () => {
       // Start auto-scrolling when not hovered
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
-      }, 3000); // 3 seconds interval
+      }, 7000); // 3 seconds interval
     }
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
@@ -133,6 +136,23 @@ const Home = () => {
       </div>
     <div className="flex flex-wrap justify-center space-x-4 p-4 mt-1">
   {carsData.map((car, index) => (
+    <CarCard 
+      key={index}
+      name={car.name}
+      type={car.type}
+      image={car.image}
+      fuelType={car.fuelType}
+      transmission={car.transmission}
+      passengers={car.passengers}
+      pricePerDay={car.pricePerDay}
+    />
+  ))}
+</div>
+<div className="py-3 mt-3">
+        <p className="text-center text-[1.3rem] font-semibold">Favourite Cars</p>
+      </div>
+      <div className="flex flex-wrap justify-center space-x-4 p-4 mt-1">
+  {fav_cars.map((car, index) => (
     <CarCard 
       key={index}
       name={car.name}
