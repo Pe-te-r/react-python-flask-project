@@ -128,7 +128,10 @@ const Home = () => {
           <Hero2 />
         </div>
       </div>
-    <div className="flex flex-wrap justify-center space-x-4 p-4 mt-4">
+      <div className="py-3 mt-3">
+        <p className="text-center text-[1.3rem] font-semibold">Popular Cars</p>
+      </div>
+    <div className="flex flex-wrap justify-center space-x-4 p-4 mt-1">
   {carsData.map((car, index) => (
     <CarCard 
       key={index}

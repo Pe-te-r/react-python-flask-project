@@ -1,8 +1,8 @@
 import image from "../assets/hero_img.jpeg"
 const Hero1 = () => {
   return (
-    <div className="bg-[#3563E9] shadow-lg p-8 rounded-lg  w-4/5 mx-auto mt-3">
-      <div className="flex items-center justify-between max-w-6xl mx-auto">
+    <div className="bg-[#3563E9] shadow-lg p-8 rounded-lg  w-full mx-auto m-3">
+      <div className="flex items-center justify-between  mx-auto w-full">
         {/* Left Section - Text */}
         <div className="text-left text-white max-w-lg">
           {/* Heading */}

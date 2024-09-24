@@ -1,7 +1,7 @@
 import image from '../assets/hero_img.jpeg'
 const Hero2 = () => {
     return (
-      <div className="bg-[#5CAFFC] shadow-lg p-8 rounded-lg flex items-center justify-between w-4/5 mx-auto mt-3">
+      <div className="bg-[#5CAFFC] shadow-lg p-8 rounded-lg flex items-center justify-between w-full m-3 mx-auto">
         {/* Left Section */}
         <div className="text-left text-white max-w-lg">
           <h1 className="text-4xl font-bold mb-4">
