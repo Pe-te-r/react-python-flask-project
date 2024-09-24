@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { useLocalStorage } from './Storage';
+// import { useLocalStorage } from './Storage';
 
 // Define the shape of the AuthContext
 interface AuthContextProps {
@@ -14,7 +14,7 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 // AuthProvider component to provide the context to the app
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const {getData}= useLocalStorage()
+    // const {getData}= useLocalStorage()
 
   const [role, setRole] = useState<string>(''); // Default role is empty
 

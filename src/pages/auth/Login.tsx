@@ -58,7 +58,6 @@ const Login = () => {
       showToast('Login successful!','success');
       setData('token',response?.token)
       navigate('/')
-      loginAsAdmin()
 
     } catch (error: any) {
       // Error handling based on status code
