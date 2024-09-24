@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaHeart, FaRegHeart, FaGasPump, FaUser, FaCarSide } from 'react-icons/fa'; // Icons for heart, fuel, users, and car type
 
-const CarCard = ({ name, type, image, fuelType, transmission, passengers, pricePerDay }) => {
+const CarCard = ({ name, type, image, fuelType, transmission, passengers, pricePerDay }: any) => {
   const [liked, setLiked] = useState(false); // Heart state
 
   // Toggle liked state and log to console
@@ -11,7 +11,7 @@ const CarCard = ({ name, type, image, fuelType, transmission, passengers, priceP
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+    <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md m-2">
       {/* Title and Like Button */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">{name}</h2>
